@@ -1,5 +1,4 @@
 const { test, expect } = require('@playwright/test');
-const TestData = require('./utils/test-data');
 
 test.describe('Product Search Functionality', () => {
     test.beforeEach(async ({ page }) => {
