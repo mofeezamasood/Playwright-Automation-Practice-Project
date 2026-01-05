@@ -1,0 +1,35 @@
+{
+  "name": "ecommerce-automation-project",
+  "version": "1.0.0",
+  "description": "Playwright automation for e-commerce website testing",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "test:registration": "playwright test registration.spec.js",
+    "test:login": "playwright test login.spec.js",
+    "test:search": "playwright test product-search.spec.js",
+    "test:sample": "playwright test sample.spec.js",
+    "test:sample1": "playwright test sample1.spec.js",
+    "test:sample2": "playwright test sample2.spec.js"
+
+
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "playwright": "^1.57.0"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@faker-js/faker": "^10.1.0"
+  }
+}
