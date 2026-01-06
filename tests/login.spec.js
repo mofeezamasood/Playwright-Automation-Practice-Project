@@ -288,18 +288,21 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
     });
 
     test('LOGIN-POS-012: Login timeout and auto-logout', async ({ page }) => {
+        // Install clock to manipulate time
+        await page.clock.install();
+
         // Login first
         await page.fill('#email', testUser.email);
         await page.fill('#passwd', testUser.password);
         await page.click('#SubmitLogin');
         await expect(page.locator('.page-heading')).toHaveText('My account');
 
-        // Wait for session timeout (adjust time based on your application)
-        // Note: This might require adjusting Playwright timeout or mocking time
-        await page.waitForTimeout(1800000); // 30 minutes
+        // Fast-forward time by 30 minutes (1800000 ms) to simulate session timeout
+        await page.waitForTimeout(3500);
+        await page.clock.fastForward(1800000);
 
         // Try to perform an action
-        await page.goto('/index.php?controller=history');
+        await page.goto('/index.php?controller=address');
 
         // Should be redirected to login page or show session expired
         const currentUrl = page.url();
@@ -324,17 +327,17 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
 
     test('LOGIN-POS-014: Login with browser password manager', async ({ page }) => {
         // Simulate browser password manager autofill
-        await page.evaluate(() => {
+        await page.evaluate(({ email, password }) => {
             // Simulate autofill by setting values and triggering events
-            document.getElementById('email').value = arguments[0];
-            document.getElementById('passwd').value = arguments[1];
+            document.getElementById('email').value = email;
+            document.getElementById('passwd').value = password;
 
             ['email', 'passwd'].forEach(id => {
                 const element = document.getElementById(id);
                 element.dispatchEvent(new Event('input', { bubbles: true }));
                 element.dispatchEvent(new Event('change', { bubbles: true }));
             });
-        }, testUser.email, testUser.password);
+        }, { email: testUser.email, password: testUser.password });
 
         await page.click('#SubmitLogin');
 
