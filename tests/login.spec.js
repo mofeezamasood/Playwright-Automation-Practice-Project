@@ -50,8 +50,24 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
 
     // ===== POSITIVE TEST CASES =====
 
-    test('LOGIN-POS-001: Successful login with email/password', async ({ page }) => {
+    test('LOGIN-POS-001: Successful login with email/password', async ({ browser }) => {
         // Enter credentials
+        const context = await browser.newContext();
+        const page = await context.newPage();
+
+        // Create a test user
+        const timestamp = Date.now();
+        const testUser = {
+            firstName: 'Test',
+            lastName: 'User',
+            email: `TestUser${timestamp}@test.com`,
+            password: 'TestUserPassword123!',
+        };
+
+        await createTestUser(page, testUser);
+
+        // Login
+        await page.goto('/index.php?controller=authentication&back=my-account');
         await page.fill('#email', testUser.email);
         await page.fill('#passwd', testUser.password);
         await page.click('#SubmitLogin');
@@ -63,6 +79,7 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
 
         // Check welcome message
         await expect(page.locator('.info-account')).toContainText('Welcome to your account');
+        await context.close();
     });
 
     test('LOGIN-POS-002: Login with username if supported', async ({ page }) => {
@@ -555,14 +572,9 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
     });
 
     test('LOGIN-NEG-015: Login with different password encoding', async ({ page }) => {
-        // Test copy-paste with special characters
+        const timestamp = Date.now();
         const specialPassword = 'P@ssw0rd✓™©';
 
-        // Create user with special password
-        const context = await browser.newContext();
-        const setupPage = await context.newPage();
-
-        const timestamp = Date.now();
         const encodingUser = {
             firstName: 'Encoding',
             lastName: 'Test',
@@ -570,8 +582,7 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
             password: specialPassword
         };
 
-        await createTestUser(setupPage, encodingUser);
-        await setupPage.close();
+        await createTestUser(page, encodingUser);
 
         // Try login by typing
         await page.fill('#email', encodingUser.email);
@@ -579,8 +590,6 @@ test.describe('Login Functionality - Comprehensive Test Suite', () => {
         await page.click('#SubmitLogin');
 
         await expect(page.locator('.page-heading')).toHaveText('My account');
-
-        await context.close();
     });
 
     // ===== SECURITY TEST CASES =====
