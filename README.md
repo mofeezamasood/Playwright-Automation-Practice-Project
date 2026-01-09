@@ -1,8 +1,11 @@
 # E-Commerce Web Application - Test Automation Project
 
 ## Presentation
-[![Watch the video]([![Uploading Screenshot 2026-01-08 at 8.52.46 PM.png…]()
-](https://github.com/user-attachments/assets/fe5d403c-9ec0-4a3b-9630-fd73bba26b81))]([https://youtu.be/vt5fpE0bzSY](https://www.loom.com/share/58f118d89ca1470788c409899256588b))
+[![Watch the video]([https://i.sstatic.net/Vp2cE.png](https://github.com/user-attachments/assets/216d899d-23ef-4b5c-ad90-ec877e9d68a7))](https://www.loom.com/share/58f118d89ca1470788c409899256588b))
+
+
+<img width="813" height="526" alt="Screenshot 2026-01-08 at 8 52 46 PM" src="https://github.com/user-attachments/assets/216d899d-23ef-4b5c-ad90-ec877e9d68a7" />
+
 
 ## 📋 Project Overview
 
