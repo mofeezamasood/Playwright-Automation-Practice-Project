@@ -3,10 +3,6 @@
 ## Presentation
 [![Watch the video](https://github.com/user-attachments/assets/216d899d-23ef-4b5c-ad90-ec877e9d68a7)](https://www.loom.com/share/58f118d89ca1470788c409899256588b)
 
-
-<img width="813" height="526" alt="Screenshot 2026-01-08 at 8 52 46 PM" src="https://github.com/user-attachments/assets/216d899d-23ef-4b5c-ad90-ec877e9d68a7" />
-
-
 ## 📋 Project Overview
 
 This repository contains a comprehensive test automation suite for an e-commerce web application (`http://automationpractice.multiformis.com`). The project focuses on testing three critical modules: **Registration**, **Login**, and **Product Search** functionality.
