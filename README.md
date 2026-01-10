@@ -1,8 +1,5 @@
 # E-Commerce Web Application - Test Automation Project
 
-## Presentation
-[![Watch the video](https://github.com/user-attachments/assets/216d899d-23ef-4b5c-ad90-ec877e9d68a7)](https://www.loom.com/share/58f118d89ca1470788c409899256588b)
-
 ## 📋 Project Overview
 
 This repository contains a comprehensive test automation suite for an e-commerce web application (`http://automationpractice.multiformis.com`). The project focuses on testing three critical modules: **Registration**, **Login**, and **Product Search** functionality.
